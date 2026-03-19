@@ -31,6 +31,9 @@ public class FuncionarioService {
     }
 
     public void deletar(Long id){
+        if (!repository.existsById(id)) {
+            throw new RuntimeException("Funcionário não encontrado");
+        }
         repository.deleteById(id);
     }
 
